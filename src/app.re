@@ -32,12 +32,15 @@ let make = (_children) => {
   ...component,
   reducer,
   initialState: () => {route: Picture1},
+  /* initialState: () => {comp: <div> (ReasonReact.stringToElement("component")) </div>}, */
   subscriptions: (self) => [
     Sub(
       () => ReasonReact.Router.watchUrl((url) => self.send(ChangeRoute(url |> mapUrlToRoute))),
       ReasonReact.Router.unwatchUrl
     )
   ],
+  /* render: (self) => <div> self.state.comp </div>
+     }; */
   render: (self) =>
     <div>
       <ul>
